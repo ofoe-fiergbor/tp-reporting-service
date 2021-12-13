@@ -1,22 +1,12 @@
 package com.group19.reportingservice.service;
 
 import com.group19.reportingservice.domain.dto.ResponseDto;
-import com.group19.reportingservice.domain.model.Order;
-import com.group19.reportingservice.domain.model.Portfolio;
-import com.group19.reportingservice.domain.model.User;
 import com.group19.reportingservice.domain.repository.OrderRepo;
 import com.group19.reportingservice.domain.repository.PortfolioRepo;
 import com.group19.reportingservice.domain.repository.UserRepo;
 import com.group19.reportingservice.enums.ResponseDTOStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -45,11 +35,6 @@ public class ReportService {
                 .orElseGet(() -> new ResponseDto(ResponseDTOStatus.FAILED, String.format("Order %s missing",orderId)));
     }
 
-//    public ResponseDto fetchAllOrdersByStatus(String status){
-//        return new ResponseDto(ResponseDTOStatus.SUCCESS,
-//                String.format("Order with status -  %s",status), orderRepo.findAll().stream()
-//                        .filter(o-> o.getStatus().name().equalsIgnoreCase(status)).toList());
-//    }
 
     public ResponseDto fetchPortfolios(){
     return new ResponseDto(ResponseDTOStatus.SUCCESS,
