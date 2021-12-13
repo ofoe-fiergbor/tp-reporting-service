@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.tags.Param;
@@ -24,13 +25,13 @@ public class ReportController {
         return new ResponseEntity<>(reportingService.fetchAllOrders(), HttpStatus.OK);
     }
 
-    @GetMapping("/orderbook/product/")
+    @GetMapping("/order-book/product/")
     public ResponseEntity<ResponseDto>  fetchAllOrders(@RequestParam("status") String status){
         return new ResponseEntity<>(reportingService.fetchAllOrdersByCustomField(status),HttpStatus.FOUND);
     }
 
     @GetMapping("/order/{id}")
-    public ResponseEntity<ResponseDto>  fetchAllOrders(Long orderId){
+    public ResponseEntity<ResponseDto>  fetchAllOrders(@PathVariable Long orderId){
         return new ResponseEntity<>(reportingService.fetchOrderStatus(String.valueOf(orderId)),HttpStatus.FOUND);
     }
 
